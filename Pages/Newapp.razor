@@ -1,0 +1,26 @@
+@page "/newapp"
+@page "/coinflip"
+@using System
+
+<h3>Gra "Rzut monetą"</h3>
+
+<p>Kliknij przycisk, aby rzucić monetą!</p>
+
+<button @onclick="FlipCoin">Rzuć monetą</button>
+
+@if (result != null)
+{
+    <p>Wynik: @result</p>
+}
+
+@code {
+    private string result;
+
+    private void FlipCoin()
+    {
+        Random random = new Random();
+        int coinFlip = random.Next(2); // 0 lub 1
+        result = coinFlip == 0 ? "Orzeł" : "Reszka";
+    }
+}
+
